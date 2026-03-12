@@ -1,0 +1,412 @@
+{
+  "openapi": "3.1.2",
+  "info": {
+    "title": "Onboarding API",
+    "version": "1.0.0",
+    "description": "A simple backend demo API application built with Rails",
+    "contact": {
+      "name": "API Support",
+      "email": "support@fabrikator.io"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://fabrikator.knog.pl",
+      "description": "Production server"
+    },
+    {
+      "url": "http://127.0.0.1:3000",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/api/v1/users/{user_id}/onboarding": {
+      "get": {
+        "summary": "Get onboarding config",
+        "tags": ["Onboarding"],
+        "operationId": "getOnboading",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "id of the user",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all onboarding steps",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Onboarding"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new onboarding",
+        "tags": ["Onboarding"],
+        "operationId": "createOnboarding",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "id of the user",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Onboarding created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Onboarding"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update onboarding",
+        "tags": ["Onboarding"],
+        "operationId": "updateOnboarding",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "id of the user",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOnboardingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Onboarding created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Onboarding"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/{user_id}/onboarding/upload": {
+      "post": {
+        "summary": "Upload file for onboarding",
+        "tags": ["Onboarding"],
+        "operationId": "uploadOnboardingFile",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "id of the user",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFile"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "List of onboarding configs",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Onboarding"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "tags": ["Health"],
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "OK"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Onboarding": {
+        "type": "object",
+        "required": ["id", "last_step", "completed", "created_at", "updated_at"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The unique identifier for the onboarding"
+          },
+          "last_step": {
+            "type": "integer",
+            "description": "The last step",
+            "minLength": 1,
+            "maxLength": 32
+          },
+          "completed": {
+            "type": "boolean",
+            "description": "Whether the onboading is completed"
+          },
+          "default_lead_time": {
+            "type": "integer",
+            "description": "Default order lead time in days"
+          },
+          "default_days_of_stock": {
+            "type": "integer",
+            "description": "Default days of stock for products"
+          },
+          "default_forecasting_days": {
+            "type": "integer",
+            "description": "Default forecastingldays"
+          },
+          "existing_pos": {
+            "type": "string",
+            "description": "S3 path for excel/csv with existing POs"
+          },
+          "vendors_as_suppliers": {
+            "type": "boolean",
+            "description": "Whether copy vendors as suppliers"
+          },
+          "bundlers": {
+            "type": "string",
+            "description": "S3 path for excel/csv with existing bunndles"
+          },
+          "integrations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "List of integratiions"
+            }
+          },
+          "requested_integrations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "List of integratiions"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The creation timestamp"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The last update timestamp"
+          }
+        }
+      },
+      "CreateOnboardingRequest": {
+        "type": "object",
+        "required": ["title"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "The title of the todo",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional description of the todo",
+            "maxLength": 1000
+          }
+        }
+      },
+      "UpdateOnboardingRequest": {
+        "type": "object",
+        "required": ["last_step"],
+        "properties": {
+          "last_step": {
+            "type": "string",
+            "description": "The step of the onboarding",
+            "minLength": 1,
+            "maxLength": 64
+          },
+          "default_days_of_stock": {
+            "type": "integer",
+            "description": "Example field to update",
+            "maxLength": 1000
+          }
+        }
+      },
+      "UploadFile": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "description": "File for upload"
+          },
+          "last_step": {
+            "type": "string"
+          }
+        }
+
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "The path to the field that failed validation"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "The validation error message"
+                },
+                "errorCode": {
+                  "type": "string",
+                  "description": "The error code"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
