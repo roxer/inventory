@@ -45,13 +45,14 @@ class Api::V1::OnboardingsController < ApplicationController
         onboarding.requested_integrations = requested_integrations
       end
 
-      onboarding.last_step = step
-      onboarding.save!
-
       if new_integrations.present?
         user.add_integrations(new_integrations)
       end
     end
+
+    onboarding.last_step = step
+    onboarding.save!
+
 
     render json: onboarding.to_json
   end
