@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :users do
         resource :onboarding, only: [ :show, :create, :update ] do
           post :upload, on: :collection
-          # patch
+          get :steps, on: :collection
         end
       end
     end

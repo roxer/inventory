@@ -2,7 +2,7 @@ class CreateOnboardings < ActiveRecord::Migration[8.1]
   def change
     create_table :onboardings do |t|
       t.references :user, null: false, foreign_key: true
-      t.string :last_step, null: false, default: 'start'
+      t.string :current_step, null: false, default: 'step_1'
       t.integer :default_lead_time
       t.integer :default_days_of_stock
       t.integer :default_forecasting_days

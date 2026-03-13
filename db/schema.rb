@@ -10,14 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_10_221120) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_13_120953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "industry"
+    t.string "location"
+    t.integer "size"
+    t.string "subscription_tier"
+    t.datetime "updated_at", null: false
+  end
 
   create_table "integrations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "onboarding_states", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "onboarding_id", null: false
+    t.integer "proggress", default: 0
+    t.string "status", null: false
+    t.string "step", null: false
+    t.datetime "updated_at", null: false
+    t.index ["onboarding_id"], name: "index_onboarding_states_on_onboarding_id"
   end
 
   create_table "onboardings", force: :cascade do |t|
@@ -37,10 +56,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_10_221120) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.string "categories", default: [], array: true
+    t.decimal "cost"
     t.datetime "created_at", null: false
+    t.integer "lead_time"
     t.string "name", null: false
     t.decimal "price"
+    t.string "sku"
+    t.bigint "supplier_id"
     t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "sales_histories", force: :cascade do |t|
@@ -53,6 +78,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_10_221120) do
     t.string "payment_id"
     t.bigint "product_id", null: false
     t.decimal "quantity"
+    t.decimal "revenue"
     t.decimal "sales_price"
     t.datetime "updated_at", null: false
     t.bigint "warehouse_id"
@@ -84,15 +110,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_10_221120) do
   end
 
   create_table "vendors", force: :cascade do |t|
+    t.integer "avg_lead_time"
+    t.string "country"
     t.datetime "created_at", null: false
     t.string "name"
+    t.decimal "reliability_score"
     t.datetime "updated_at", null: false
   end
 
   create_table "warehouses", force: :cascade do |t|
     t.string "address"
+    t.integer "capacity"
     t.datetime "created_at", null: false
     t.string "name", null: false
+    t.string "type"
     t.datetime "updated_at", null: false
     t.bigint "users_id", null: false
     t.index ["name"], name: "index_warehouses_on_name", unique: true
@@ -108,7 +139,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_10_221120) do
     t.index ["warehouse_id"], name: "index_warehouses_products_on_warehouse_id"
   end
 
+  add_foreign_key "onboarding_states", "onboardings"
   add_foreign_key "onboardings", "users"
+  add_foreign_key "products", "suppliers"
   add_foreign_key "sales_histories", "products"
   add_foreign_key "sales_histories", "warehouses"
   add_foreign_key "suppliers", "vendors"

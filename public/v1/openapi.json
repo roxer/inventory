@@ -20,6 +20,46 @@
     }
   ],
   "paths": {
+    "/api/v1/users/{user_id}/onboarding/steps": {
+      "get": {
+        "summary": "Get onboarding steps",
+        "tags": ["Onboarding"],
+        "operationId": "getOnboadingSteps",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "id of the user",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all onboarding steps",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OnboardingSteps"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/users/{user_id}/onboarding": {
       "get": {
         "summary": "Get onboarding config",
@@ -255,13 +295,13 @@
     "schemas": {
       "Onboarding": {
         "type": "object",
-        "required": ["id", "last_step", "completed", "created_at", "updated_at"],
+        "required": ["id", "current_step", "completed", "created_at", "updated_at"],
         "properties": {
           "id": {
             "type": "integer",
             "description": "The unique identifier for the onboarding"
           },
-          "last_step": {
+          "current_step": {
             "type": "integer",
             "description": "The last step",
             "minLength": 1,
@@ -321,28 +361,48 @@
           }
         }
       },
+      "OnboardingSteps": {
+        "type": "object",
+        "required": ["step"],
+        "properties": {
+          "step": {
+            "type": "object",
+            "description": "The step",
+            "properties": {
+              "state": {
+                "type": "string",
+                "description": "The step state"
+              },
+              "progress": {
+                "type": "number",
+                "description": "The step progress"
+              }
+            }
+          }
+        }
+      },
       "CreateOnboardingRequest": {
         "type": "object",
         "required": ["title"],
         "properties": {
           "title": {
             "type": "string",
-            "description": "The title of the todo",
+            "description": "The title of the onboarding",
             "minLength": 1,
             "maxLength": 255
           },
           "description": {
             "type": "string",
-            "description": "Optional description of the todo",
+            "description": "Optional description of the onboarding",
             "maxLength": 1000
           }
         }
       },
       "UpdateOnboardingRequest": {
         "type": "object",
-        "required": ["last_step"],
+        "required": ["current_step"],
         "properties": {
-          "last_step": {
+          "current_step": {
             "type": "string",
             "description": "The step of the onboarding",
             "minLength": 1,
@@ -363,7 +423,7 @@
             "format": "binary",
             "description": "File for upload"
           },
-          "last_step": {
+          "current_step": {
             "type": "string"
           }
         }

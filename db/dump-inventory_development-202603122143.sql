@@ -87,7 +87,7 @@ ALTER SEQUENCE public.integrations_id_seq OWNED BY public.integrations.id;
 CREATE TABLE public.onboardings (
     id bigint NOT NULL,
     user_id bigint NOT NULL,
-    last_step character varying DEFAULT 'start'::character varying NOT NULL,
+    current_step character varying DEFAULT 'start'::character varying NOT NULL,
     default_lead_time integer,
     default_days_of_stock integer,
     default_forecasting_days integer,

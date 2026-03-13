@@ -17,7 +17,7 @@ class Api::V1::OnboardingsController < ApplicationController
 
   def update
     uid = params["user_id"]
-    step = params["last_step"]
+    step = params["current_step"]
 
     user = User.find(uid)
     onboarding = user.onboarding
@@ -50,10 +50,25 @@ class Api::V1::OnboardingsController < ApplicationController
       end
     end
 
-    onboarding.last_step = step
+    onboarding.current_step = step
     onboarding.save!
 
-
     render json: onboarding.to_json
+  end
+
+  def steps
+    uid = params["user_id"]
+    user = User.find(uid)
+
+    result =
+      if user.onboarding
+        user.onboarding
+          .current_steps
+          .merge(current_step: user.onboarding.current_step)
+      else
+        Onboarding::STEPS.merge(current_step: "step_1")
+      end
+
+    render json: result.to_json
   end
 end
