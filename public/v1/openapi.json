@@ -20,6 +20,35 @@
     }
   ],
   "paths": {
+    "/api/v1/users": {
+      "post": {
+        "summary": "Create a user",
+        "tags": ["Users"],
+        "operationId": "postUsers",
+        "responses": {
+          "200": {
+            "description": "User info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/users/{user_id}/onboarding/steps": {
       "get": {
         "summary": "Get onboarding steps",
@@ -414,6 +443,19 @@
             "maxLength": 1000
           }
         }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "FName of the user"
+          },
+          "current_step": {
+            "type": "string"
+          }
+        }
+
       },
       "UploadFile": {
         "type": "object",
