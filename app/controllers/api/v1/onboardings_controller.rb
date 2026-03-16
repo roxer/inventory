@@ -53,8 +53,13 @@ class Api::V1::OnboardingsController < ApplicationController
     end
 
     onboarding.current_step = step
-    onboarding.save!
-    run_jobs(step)
+    if onboarding.save
+      o_state = onboarding.onboarding_states.where(step: step).first_or_initialize
+      o_state.state = :complted
+      o_state.save
+
+      run_jobs(step)
+    end
 
     render json: onboarding.to_json
   end
