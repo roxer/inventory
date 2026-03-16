@@ -3,13 +3,13 @@ class Onboarding < ApplicationRecord
   has_many :onboarding_states
 
   STEPS = {
-    step_1: { locked: false },
-    step_2: { locked: false },
-    step_3: { locked: false },
-    step_4: { locked: false },
-    step_5: { locked: true },
-    step_6: { locked: true },
-    step_7: { locked: true },
+    step_1: { locked: false, state: "init" },
+    step_2: { locked: false, state: "init" },
+    step_3: { locked: false, state: "init" },
+    step_4: { locked: false, state: "init" },
+    step_5: { locked: true, state: "init" },
+    step_6: { locked: true, state: "init" },
+    step_7: { locked: true, state: "init" },
   }.freeze
 
   def integrations

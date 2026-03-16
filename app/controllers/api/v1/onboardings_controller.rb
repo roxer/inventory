@@ -1,4 +1,6 @@
 class Api::V1::OnboardingsController < ApplicationController
+  before_action :sync_progress, only: [:steps]
+
   def create
     uid = params["user_id"]
     user = User.find(uid)
@@ -52,6 +54,7 @@ class Api::V1::OnboardingsController < ApplicationController
 
     onboarding.current_step = step
     onboarding.save!
+    run_jobs(step)
 
     render json: onboarding.to_json
   end
@@ -70,5 +73,15 @@ class Api::V1::OnboardingsController < ApplicationController
       end
 
     render json: result.to_json
+  end
+
+  private
+
+  def sync_progress
+    # TODO: update db with ProductFetcher.new(company).progress
+  end
+
+  def run_jobs(step)
+    # TODO: use service to run async jobs for given step
   end
 end
