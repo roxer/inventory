@@ -11,6 +11,8 @@ For `locked` steps there could be Directed Acyclic Graph describing all steps fo
 
 Swagger OpenAPI v3.1 https://fabrikator.knog.pl/api-docs/index.html
 
+Demo http://roxer.iq.pl/demo/inventory_api_demo.mov
+
 API implements:
 * create new user - to get `user_id` for next api calls 
 * second step - create Onboarding with `POST` request
