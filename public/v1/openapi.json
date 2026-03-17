@@ -378,12 +378,12 @@
               "description": "List of integratiions"
             }
           },
-          "createdAt": {
+          "created_at": {
             "type": "string",
             "format": "date-time",
             "description": "The creation timestamp"
           },
-          "updatedAt": {
+          "updated_at": {
             "type": "string",
             "format": "date-time",
             "description": "The last update timestamp"
@@ -447,15 +447,24 @@
       "User": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "number"
+          },
           "name": {
             "type": "string",
-            "description": "FName of the user"
+            "description": "Name of the user"
           },
-          "current_step": {
-            "type": "string"
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The last update timestamp"
           }
         }
-
       },
       "UploadFile": {
         "type": "object",
@@ -469,7 +478,6 @@
             "type": "string"
           }
         }
-
       },
       "Error": {
         "type": "object",

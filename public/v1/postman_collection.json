@@ -1,0 +1,1188 @@
+{
+    "item": [
+        {
+            "name": "Users",
+            "description": "",
+            "item": [
+                {
+                    "id": "d8434c1c-6e84-41bd-8347-d3190c46a1af",
+                    "name": "Create a user",
+                    "request": {
+                        "name": "Create a user",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "api",
+                                "v1",
+                                "users"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "469780e6-5d79-4a7f-86a2-57712dd690c4",
+                            "name": "User info",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"name\": \"<string>\",\n  \"current_step\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "617a3c89-56df-4687-b24d-2ac2299d096a",
+                            "name": "Internal server error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"error\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Onboarding",
+            "description": "",
+            "item": [
+                {
+                    "id": "f07f2f24-96ef-488a-9a0c-aa955f63db28",
+                    "name": "Get onboarding steps",
+                    "request": {
+                        "name": "Get onboarding steps",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                ":user_id",
+                                "onboarding",
+                                "steps"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<integer>",
+                                    "key": "user_id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) id of the user",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "f64ff25f-d507-4672-a6c6-07db04362c3c",
+                            "name": "List of all onboarding steps",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding",
+                                        "steps"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"step\": {\n    \"state\": \"<string>\",\n    \"progress\": \"<number>\"\n  }\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "48bd522c-ae54-40c2-9695-89ff13293048",
+                            "name": "Internal server error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding",
+                                        "steps"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"error\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "26f0ab39-46b4-47c0-956c-3f7feecfad64",
+                    "name": "Get onboarding config",
+                    "request": {
+                        "name": "Get onboarding config",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                ":user_id",
+                                "onboarding"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<integer>",
+                                    "key": "user_id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) id of the user",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "33c01855-a15c-4d46-bfae-742b5ce69992",
+                            "name": "List of all onboarding steps",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<integer>\",\n  \"current_step\": \"<integer>\",\n  \"completed\": \"<boolean>\",\n  \"default_lead_time\": \"<integer>\",\n  \"default_days_of_stock\": \"<integer>\",\n  \"default_forecasting_days\": \"<integer>\",\n  \"existing_pos\": \"<string>\",\n  \"vendors_as_suppliers\": \"<boolean>\",\n  \"bundlers\": \"<string>\",\n  \"integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"requested_integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "7c8b0368-34a2-4ac7-a6b3-69c5daa94bb2",
+                            "name": "Internal server error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"error\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "1bf12fc1-d278-4e57-8f27-012a9b3156c3",
+                    "name": "Create a new onboarding",
+                    "request": {
+                        "name": "Create a new onboarding",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                ":user_id",
+                                "onboarding"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<integer>",
+                                    "key": "user_id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) id of the user",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "a328c1b4-aa7c-4deb-823a-08c0c8f1a2c7",
+                            "name": "Onboarding created successfully",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<integer>\",\n  \"current_step\": \"<integer>\",\n  \"completed\": \"<boolean>\",\n  \"default_lead_time\": \"<integer>\",\n  \"default_days_of_stock\": \"<integer>\",\n  \"default_forecasting_days\": \"<integer>\",\n  \"existing_pos\": \"<string>\",\n  \"vendors_as_suppliers\": \"<boolean>\",\n  \"bundlers\": \"<string>\",\n  \"integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"requested_integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "f709a639-be36-43bf-9ba4-5a306d777e97",
+                            "name": "Validation error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"path\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\"\n    },\n    {\n      \"path\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\"\n    }\n  ]\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "c5b98cf6-79d8-4a27-9b54-95c3f3c3b167",
+                            "name": "Internal server error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"error\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "2f514bd2-69bd-43b9-a35e-3f39a16b7083",
+                    "name": "Update onboarding",
+                    "request": {
+                        "name": "Update onboarding",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                ":user_id",
+                                "onboarding"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<integer>",
+                                    "key": "user_id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) id of the user",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PATCH",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"current_step\": \"<string>\",\n  \"default_days_of_stock\": \"<integer>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "67897f51-ec75-4cf2-91be-c18fab4d1089",
+                            "name": "Onboarding created successfully",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PATCH",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"current_step\": \"<string>\",\n  \"default_days_of_stock\": \"<integer>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<integer>\",\n  \"current_step\": \"<integer>\",\n  \"completed\": \"<boolean>\",\n  \"default_lead_time\": \"<integer>\",\n  \"default_days_of_stock\": \"<integer>\",\n  \"default_forecasting_days\": \"<integer>\",\n  \"existing_pos\": \"<string>\",\n  \"vendors_as_suppliers\": \"<boolean>\",\n  \"bundlers\": \"<string>\",\n  \"integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"requested_integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "a8aa1ab4-3c41-481c-9992-9f6d16c6acc8",
+                            "name": "Validation error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PATCH",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"current_step\": \"<string>\",\n  \"default_days_of_stock\": \"<integer>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"message\": \"<string>\",\n  \"errors\": [\n    {\n      \"path\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\"\n    },\n    {\n      \"path\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorCode\": \"<string>\"\n    }\n  ]\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "e6d56cf8-ecc8-47f2-8106-7fe57e570777",
+                            "name": "Internal server error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PATCH",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"current_step\": \"<string>\",\n  \"default_days_of_stock\": \"<integer>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"error\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "1ad5f92d-c007-4859-ae53-e4de07069cf1",
+                    "name": "Upload file for onboarding",
+                    "request": {
+                        "name": "Upload file for onboarding",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "api",
+                                "v1",
+                                "users",
+                                ":user_id",
+                                "onboarding",
+                                "upload"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<integer>",
+                                    "key": "user_id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) id of the user",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "description": {
+                                        "content": "File for upload",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "file",
+                                    "type": "file"
+                                },
+                                {
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "current_step",
+                                    "value": "<string>",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "2e14dd62-dadc-48a2-8e45-91bfb279f0d9",
+                            "name": "List of onboarding configs",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding",
+                                        "upload"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "description": {
+                                                "content": "File for upload",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "file",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "current_step",
+                                            "value": "<string>",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<integer>\",\n  \"current_step\": \"<integer>\",\n  \"completed\": \"<boolean>\",\n  \"default_lead_time\": \"<integer>\",\n  \"default_days_of_stock\": \"<integer>\",\n  \"default_forecasting_days\": \"<integer>\",\n  \"existing_pos\": \"<string>\",\n  \"vendors_as_suppliers\": \"<boolean>\",\n  \"bundlers\": \"<string>\",\n  \"integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"requested_integrations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"createdAt\": \"<dateTime>\",\n  \"updatedAt\": \"<dateTime>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "fdb8a0b7-9771-4a64-9b9b-00e6e3791c54",
+                            "name": "Internal server error",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "api",
+                                        "v1",
+                                        "users",
+                                        ":user_id",
+                                        "onboarding",
+                                        "upload"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) id of the user",
+                                                "type": "text/plain"
+                                            },
+                                            "type": "any",
+                                            "value": "<integer>",
+                                            "key": "user_id"
+                                        }
+                                    ]
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "description": {
+                                                "content": "File for upload",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "file",
+                                            "type": "file"
+                                        },
+                                        {
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "current_step",
+                                            "value": "<string>",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"error\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Health",
+            "description": "",
+            "item": [
+                {
+                    "id": "3b159339-0d3d-4416-81d0-56416240ea7e",
+                    "name": "Health check",
+                    "request": {
+                        "name": "Health check",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "health"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "52446252-831c-4795-8186-54447122b7e6",
+                            "name": "Service is healthy",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "health"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"status\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "https://fabrikator.knog.pl"
+        }
+    ],
+    "info": {
+        "_postman_id": "f770b1d9-fc7a-44c8-a38c-069e7f0c0ed3",
+        "name": "Onboarding API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "A simple backend demo API application built with Rails\n\nContact Support:\n Name: API Support\n Email: support@fabrikator.io",
+            "type": "text/plain"
+        }
+    }
+}
